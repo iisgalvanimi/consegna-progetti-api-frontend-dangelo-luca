@@ -1,5 +1,8 @@
-<div *ngFor="let element of animals">
-    <p>Nome: <strong>{{element.name}}</strong></p>
-    <p>emoji: <i>{{element.emoji}}</i></p>
-    <div class="space" style="height: 5rem;"></div>
-   </div>
+<div class="row m-2">
+        <div class="col border" *ngFor="let animali of animals">
+            <div>
+                {{animali.emoji}}
+                <div class="text-info">{{animali.name}}</div>
+            </div>
+        </div>
+    </div>

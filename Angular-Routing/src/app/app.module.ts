@@ -9,7 +9,6 @@ import { Routes } from '@angular/router';
 import { FruitsComponent } from './fruits/fruits.component';
 import { AnimalsComponent } from './animals/animals.component';
 import { GenericoComponent } from './generico/generico.component';
-import { FooComponent } from './foo/foo.component';
 
 
 
@@ -18,8 +17,7 @@ import { FooComponent } from './foo/foo.component';
     AppComponent,
     FruitsComponent,
     AnimalsComponent,
-    GenericoComponent,
-    FooComponent
+    GenericoComponent
   ],
   imports: [
     BrowserModule,

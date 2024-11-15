@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component} from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
+import { Foo } from './foo.model';
 
 @Component({
   selector: 'app-foo',
@@ -9,9 +10,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./foo.component.css']
 })
 export class FooComponent {
+  fooData : Foo[] | undefined;
+  o: Observable<Object> | undefined;
+  oFoo : Observable<Foo[]> | undefined;
   data!: Object; //Il ‘!’ serve a creare variabili non inizializzate
   loading: boolean=false;
-  o! :Observable<Object>;
   constructor(public http: HttpClient) {}
   makeRequest(): void {
     console.log("here");
@@ -46,4 +49,12 @@ export class FooComponent {
       this.loading = false;
     });
   }
+
+  makeTypedRequest() : void
+ {
+   //oFoo : Observable<Foo[]>; va dichiarato tra gli attributi della classe
+   this.oFoo = this.http.get<Foo[]>('https://jsonplaceholder.typicode.com/posts');
+   this.oFoo.subscribe(data => {this.fooData = data;});
+ }
+
 }

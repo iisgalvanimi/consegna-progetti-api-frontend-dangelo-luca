@@ -3,14 +3,27 @@
     <div *ngIf = "caricamento">
         Caricamento....
     </div>
+<br>
+<br>
 
+<div *ngIf="!caricamento && datiCarta" class="card-container" >
 
-<div *ngIf="!caricamento && datiCarta" class="card-container">
-    <h1>{{ datiCarta.name }}</h1>
-    <img [src]="datiCarta.image_uris.normal" alt="{{ datiCarta.name }}">
-    <p><strong>Type:</strong> {{ datiCarta.type_line }}</p>
-    <p><strong>Text:</strong> {{ datiCarta.oracle_text }}</p>
-    <p><strong>Set:</strong> {{ datiCarta.set_name }}</p>
-    <p><strong>Price:</strong> ${{ datiCarta.prices.usd }}</p>
+    <img [src]="datiCarta.image_uris.normal" alt="{{ datiCarta.name }}" style="width: 300px; margin-left: 40%;">
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <p><strong>Type:</strong> {{ datiCarta.type_line }}</p>
+              <p><strong>Text:</strong> {{ datiCarta.oracle_text }}</p>
+              <p><strong>Set:</strong> {{ datiCarta.set_name }}</p>
+              <p><strong>Price:</strong> ${{ datiCarta.prices.usd }}</p>
+            </div>
+          </div>
+        </div>
+    
   </div>
   </div>

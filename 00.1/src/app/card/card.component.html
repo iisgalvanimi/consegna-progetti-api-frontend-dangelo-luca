@@ -11,19 +11,19 @@
     <img [src]="datiCarta.image_uris.normal" alt="{{ datiCarta.name }}" style="width: 300px; margin-left: 40%;">
     <br>
     <br>
-    <div class="row">
+    <div class="row justify-content-center" >
         <div class="col-sm-6">
-          <div class="card">
+          <div class="card" style="border: 1px solid black;">
             <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <p><strong>Type:</strong> {{ datiCarta.type_line }}</p>
-              <p><strong>Text:</strong> {{ datiCarta.oracle_text }}</p>
-              <p><strong>Set:</strong> {{ datiCarta.set_name }}</p>
-              <p><strong>Price:</strong> ${{ datiCarta.prices.usd }}</p>
+              <h5 class="card-title">{{datiCarta.name}}</h5>
+              <p class="card-text"><strong>Type:</strong> {{ datiCarta.type_line }}</p>
+              <p class="card-text"><strong>Text:</strong> {{ datiCarta.oracle_text }}</p>
+              <p class="card-text"><strong>Set:</strong> {{ datiCarta.set_name }}</p>
+              <p class="card-text"><strong>Price:</strong> ${{ datiCarta.prices.usd }}</p>
             </div>
           </div>
         </div>
     
   </div>
   </div>
+<br>

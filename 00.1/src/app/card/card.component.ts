@@ -1,40 +1,48 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CardService } from '../card.service';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  styleUrls: ['./card.component.css'],
 })
 export class CardComponent implements OnInit {
+  cardData: any;
+  searchName: string = ''; // Nome della carta da cercare
 
-  datiCarta: any;
-  caricamento = false;
-
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private cardService: CardService
+  ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      const NomeCarta = params.get('name')!;
-      this.fetchdatiCarta(NomeCarta);
+    // Recupera il parametro "name" dalla route
+    this.route.paramMap.subscribe((params) => {
+      const cardName = params.get('name');
+      if (cardName) {
+        this.fetchCardData(cardName);
+      }
     });
   }
 
-  fetchdatiCarta(NomeCarta: string): void {
-    this.caricamento = true;
-    const url = `https://api.scryfall.com/cards/named?fuzzy=${NomeCarta}`; // Usare backticks
-    this.http.get(url).subscribe(
+  fetchCardData(cardName: string): void {
+    this.cardService.getCardData(cardName).subscribe(
       (data) => {
-        this.datiCarta = data;
-        this.caricamento = false;
+        this.cardData = data;
       },
       (error) => {
-        console.error('Carta non trovata', error);
-        this.caricamento = false;
+        this.cardData = null; // Gestione di un nome non valido
+        console.error('Carta non trovata:', error);
       }
     );
   }
 
+  // Ricerca la carta quando l'utente preme il pulsante
+  searchCard(): void {
+    if (this.searchName.trim()) {
+      this.router.navigate(['/card', this.searchName.trim()]);
+    }
+  }
 }
-

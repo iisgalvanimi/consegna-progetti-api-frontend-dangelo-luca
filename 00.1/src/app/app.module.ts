@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardComponent } from './card/card.component';
 import { HttpClientModule } from '@angular/common/http'; //Importa Il modulo http
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { HttpClientModule } from '@angular/common/http'; //Importa Il modulo htt
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,  
 
   
   ],

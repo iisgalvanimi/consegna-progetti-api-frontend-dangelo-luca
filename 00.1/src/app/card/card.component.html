@@ -1,29 +1,30 @@
-
-<div>
-    <div *ngIf = "caricamento">
-        Caricamento....
-    </div>
 <br>
-<br>
+<!-- Barra di ricerca -->
+<div class="search-bar">
+  <input type="text" [(ngModel)]="searchName" placeholder="Cerca una carta" aria-label="Search"/>
+  <button (click)="searchCard()">Cerca</button>
+</div>
 
-<div *ngIf="!caricamento && datiCarta" class="card-container" >
 
-    <img [src]="datiCarta.image_uris.normal" alt="{{ datiCarta.name }}" style="width: 300px; margin-left: 40%;">
-    <br>
-    <br>
-    <div class="row justify-content-center" >
-        <div class="col-sm-6">
-          <div class="card" style="border: 1px solid black;">
-            <div class="card-body">
-              <h5 class="card-title">{{datiCarta.name}}</h5>
-              <p class="card-text"><strong>Type:</strong> {{ datiCarta.type_line }}</p>
-              <p class="card-text"><strong>Text:</strong> {{ datiCarta.oracle_text }}</p>
-              <p class="card-text"><strong>Set:</strong> {{ datiCarta.set_name }}</p>
-              <p class="card-text"><strong>Price:</strong> ${{ datiCarta.prices.usd }}</p>
-            </div>
+  <img [src]="cardData.image_uris.normal" alt="{{ cardData.name }}" style="width: 300px; margin-left: 40%;">
+  <br>
+  <br>
+  <div class="row justify-content-center" >
+      <div class="col-sm-6">
+        <div class="card" style="border: 1px solid black;">
+          <div class="card-body">
+            <h5 class="card-title">{{cardData.name}}</h5>
+            <p class="card-text"><strong>Type:</strong> {{ cardData.type_line }}</p>
+            <p class="card-text"><strong>Text:</strong> {{ cardData.oracle_text }}</p>
+            <p class="card-text"><strong>Set:</strong> {{ cardData.set_name }}</p>
+            <p class="card-text"><strong>Price:</strong> ${{ cardData.prices.usd }}</p>
           </div>
         </div>
-    
-  </div>
-  </div>
-<br>
+      </div>
+  
+
+
+<!-- Messaggio di errore se la carta non è trovata -->
+<ng-template #notFound>
+  <p>Carta non trovata. Prova un altro nome.</p>
+</ng-template>
